@@ -1,0 +1,65 @@
+html
+<body>
+  <div id="conteudo">
+    <h1>Ambiente Virtual de Aprendizagem</h1>
+    
+    <div id="unidades">
+      <!-- ... -->
+    </div>
+    
+    <div id="conteudo-unidade" style="display: none;">
+      <h2 id="titulo-unidade"></h2>
+      <div id="descricao-unidade"></div>
+      <div id="progresso-unidade"></div>
+      
+      <h3>Conteúdos</h3>
+      <ul id="lista-conteudos"></ul>
+      
+      <h3>Arquivos</h3>
+      <ul id="lista-arquivos"></ul>
+      
+      <h3>Tarefas</h3>
+      <ul id="lista-tarefas"></ul>
+    </div>
+    
+    <!-- ... -->
+  </div>
+  
+  <script>
+    function exibirConteudoUnidade(unidadeId) {
+      // ...
+      
+      // Limpa as listas de conteúdos, arquivos e tarefas
+      document.getElementById("lista-conteudos").innerHTML = "";
+      document.getElementById("lista-arquivos").innerHTML = "";
+      document.getElementById("lista-tarefas").innerHTML = "";
+      
+      // Adiciona conteúdos à lista
+      var conteudos = ["Vídeo Aula 1", "Slides de Aula", "Exercícios Resolvidos"];
+      for (var i = 0; i < conteudos.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = conteudos[i];
+        document.getElementById("lista-conteudos").appendChild(li);
+      }
+      
+      // Adiciona arquivos à lista
+      var arquivos = ["Apresentação.pdf", "Exemplo de Código.zip", "Leitura Complementar.txt"];
+      for (var i = 0; i < arquivos.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = arquivos[i];
+        document.getElementById("lista-arquivos").appendChild(li);
+      }
+      
+      // Adiciona tarefas à lista
+      var tarefas = ["Exercício 1", "Questionário 1", "Trabalho Final"];
+      for (var i = 0; i < tarefas.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = tarefas[i];
+        document.getElementById("lista-tarefas").appendChild(li);
+      }
+      
+      // ...
+    }
+  </script>
+</body>
+</html>
