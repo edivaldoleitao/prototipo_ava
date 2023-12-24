@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="questionario">
+        <p id="meuParagrafo">
+            1. Que é Segurança do Trabalho?
+
+            2. Como a Segurança do Trabalho é regulamentada no Brasil?
+
+            3. As convenções da Organização Internacional do Trabalho tem força de lei no Brasil?
+        </p>
+
+        
+    </div>
+
+    <script>
+        // Use a função de leitura de arquivo do JavaScript para ler o conteúdo do arquivo de texto
+        function lerArquivoTexto(arquivo, callback) {
+          var leitor = new FileReader();
+          leitor.onload = function(evento) {
+            var conteudo = evento.target.result;
+            callback(conteudo);
+          };
+          leitor.readAsText(arquivo);
+        }
+      
+        // Selecione o elemento de parágrafo pelo ID
+        var paragrafo = document.getElementById("meuParagrafo");
+      
+        // Carregue o arquivo de texto e preencha o parágrafo com o conteúdo
+        var arquivoTexto = "arquivo.txt"; // Substitua pelo caminho correto do arquivo
+        lerArquivoTexto(arquivoTexto, function(conteudo) {
+          paragrafo.innerText = conteudo;
+        });
+      </script>
+</body>
+</html>

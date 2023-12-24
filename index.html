@@ -5,6 +5,107 @@
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <title>Page Title</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #conteudo {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    h2 {
+      margin-top: 20px;
+    }
+    
+    h3 {
+      margin-top: 10px;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    li {
+      margin-bottom: 5px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    
+    .btn:hover {
+      background-color: #0069d9;
+    }
+    
+    .form-group {
+      margin-bottom: 10px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    .form-group input[type="text"],
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+  </style>
 </head>
 <body>
   <div id="conteudo">
@@ -14,58 +115,123 @@
       <!-- ... -->
     </div>
     
-    <div id="conteudo-unidade" style="display: none;">
+
+    <div id="formulario-inclusao">
+      <h2>Inclusão de conteúdo</h2>
+      
+      <div class="form-group">
+        <label for="conteudoinput">Conteúdo:</label>
+        <input type="text" id="conteudoinput" name="conteudoinput">
+      </div>
+      
+      <div class="form-group">
+        <label for="arquivo">Arquivo:</label>
+        <input type="text" id="arquivo" name="arquivo">
+      </div>
+      
+      <div class="form-group">
+        <label for="tarefa">Tarefa:</label>
+        <textarea id="tarefa" name="tarefa"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <button class="btn" onclick="adicionarConteudo()">Adicionar Conteúdo</button>
+        <button class="btn" onclick="adicionarArquivo()">Adicionar Arquivo</button>
+        <button class="btn" onclick="adicionarTarefa()">Adicionar Tarefa</button>
+      </div>
+    </div>
+    
+    <div id="conteudo-unidade" >
+
+      <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'listaconteudos')">lista conteudos</button>
+        <button class="tablinks" onclick="openCity(event, 'arquivos')">arquivos</button>
+        <button class="tablinks" onclick="openCity(event, 'tarefas')">tarefas</button>
+        <button class="tablinks" onclick="openCity(event, 'listaalunos')">lista alunos</button>
+      </div>
+      
+      <div id="listaconteudos" class="tabcontent" style="display: none;">
+        <h3>Conteúdos</h3>
+        <ol id="lista-conteudos">
+        </ol>
+      </div>
+      
+      <div id="arquivos" class="tabcontent" style="display: none;">
+        <h3>Arquivos</h3>
+        <ul id="lista-arquivos"></ul>
+      </div>
+      
+      <div id="tarefas" class="tabcontent" style="display: none;">
+        <h3>Tarefas</h3>
+        <ul id="lista-tarefas"></ul>
+        <ul>
+        </ul>
+      </div>
+
+      <div id="listaalunos" class="tabcontent" style="display: none;">
+        <h3>lista alunos</h3>
+        <ul id="lista-arquivos">
+          <li>Aluno A</li>
+          <li>Aluno B</li>
+          <li>Aluno C</li>
+          <li>Aluno D</li>
+          <li>Aluno E</li>
+        </ul>
+      </div>
+
       <h2 id="titulo-unidade"></h2>
       <div id="descricao-unidade"></div>
       <div id="progresso-unidade"></div>
-      
-      <h3>Conteúdos</h3>
-      <ul id="lista-conteudos"></ul>
-      
-      <h3>Arquivos</h3>
-      <ul id="lista-arquivos"></ul>
-      
-      <h3>Tarefas</h3>
-      <ul id="lista-tarefas"></ul>
+
     </div>
     
-    <!-- ... -->
+    <iframe src="questionario.html" height="200" width="300" title="Iframe Example"></iframe>
   </div>
   
   <script>
     function exibirConteudoUnidade(unidadeId) {
       // ...
+    }
+    
+    function adicionarConteudo() {
+      debugger
+      var conteudo = document.getElementById("conteudoinput").value;
+      var li = document.createElement("a");
+      li.textContent =  conteudo;
+      li.setAttribute('href','#HTML');
+      li.href='https://www.youtube.com/watch?v=pi0YrBSpmFs&ab_channel=PAPCURSOSECONCURSOS';
       
-      // Limpa as listas de conteúdos, arquivos e tarefas
-      document.getElementById("lista-conteudos").innerHTML = "";
-      document.getElementById("lista-arquivos").innerHTML = "";
-      document.getElementById("lista-tarefas").innerHTML = "";
-      
-      // Adiciona conteúdos à lista
-      var conteudos = ["Vídeo Aula 1", "Slides de Aula", "Exercícios Resolvidos"];
-      for (var i = 0; i < conteudos.length; i++) {
-        var li = document.createElement("li");
-        li.textContent = conteudos[i];
-        document.getElementById("lista-conteudos").appendChild(li);
+      document.getElementById("lista-conteudos").appendChild(li);
+    }
+    
+    function adicionarArquivo() {
+      var arquivo = document.getElementById("arquivo").value;
+      var li = document.createElement("li");
+      li.textContent = arquivo;
+      document.getElementById("lista-arquivos").appendChild(li);
+    }
+    
+    function adicionarTarefa() {
+      var tarefa = document.getElementById("tarefa").value;
+      var li = document.createElement("a");
+      li.textContent =  tarefa;
+      li.setAttribute('href','#HTML');
+      li.href='questionario.html';
+      document.getElementById("lista-tarefas").appendChild(li);
+    }
+
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
       }
-      
-      // Adiciona arquivos à lista
-      var arquivos = ["Apresentação.pdf", "Exemplo de Código.zip", "Leitura Complementar.txt"];
-      for (var i = 0; i < arquivos.length; i++) {
-        var li = document.createElement("li");
-        li.textContent = arquivos[i];
-        document.getElementById("lista-arquivos").appendChild(li);
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
       }
-      
-      // Adiciona tarefas à lista
-      var tarefas = ["Exercício 1", "Questionário 1", "Trabalho Final"];
-      for (var i = 0; i < tarefas.length; i++) {
-        var li = document.createElement("li");
-        li.textContent = tarefas[i];
-        document.getElementById("lista-tarefas").appendChild(li);
-      }
-      
-      // ...
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
     }
   </script>
 </body>
